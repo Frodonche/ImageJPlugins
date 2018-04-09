@@ -1,0 +1,10 @@
+Exercice 1 
+(140*1 + 20*2 + 20*1 + 140*2 + 20*4 + 20*2 + 140*1 + 191*1 + 0*1)/16 = 70.125
+Filtre moyenneur, pondéré, les voisins 4-connexes ont plus de pixels.
+
+Exercice 2
+    Question 2 :
+        On observe que l'image devient de plus en plus floue à mesure qu'on applique le filtre.
+    
+    Question 3 : 
+        On constate que le floutage est plus important plus la dimension du masque est élevée
