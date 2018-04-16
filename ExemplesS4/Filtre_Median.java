@@ -38,6 +38,8 @@ public class Filtre_Median implements PlugInFilter {
         // masque 3*3 donne n = 1, 5*5 donne n = 2, 7*7 donne n = 3...
 		
 		int somme;
+		int [] temp = new int[9];
+		
 		for (int y = 0; y < h; y++){
 			for ( int x = 0; x < w; x++) {
                     somme = 0;
@@ -50,11 +52,31 @@ public class Filtre_Median implements PlugInFilter {
                         
                         }
                     }
+                
+                // Filtre median a finir
                 pixelsr[x+y*w] = (byte) Math.round((double)(somme/sommeCoeffValeurAbs));
 			
 			}
         }
 		result.show ();
 		result.updateAndDraw ();
+	}
+	
+	/**
+	*  Retourne la mediane d'un tableau d'entiers
+	*  (Trie en ordre croissant avant ?)
+	**/
+	private static int mediane(int a[]){
+        int[] effectifs = new int [256]; // tableau des effectifs
+        for(int i=0; i < a.length; i++){
+            effectifs[a[i]]++;
+        }
+        int somme = 0;
+        for(int i=0; i <= 255; i++){
+            somme = somme + effectifs[i];
+            if(2*somme >= a.length)
+            return i;
+        }
+        return -1;
 	}
 }

@@ -21,10 +21,11 @@ public class Filtre_Moyenneur implements PlugInFilter {
 		
 		byte [] pixelsr = ( byte []) ipr.getPixels ();
 		
-		int dimensions_masque = 7; // taille du masque (ex : 3 donne masque 3*3
+		int dimensions_masque = 7; // taille du masque (ex : 3 donne masque 3*3)
 		int [][] masque = new int[dimensions_masque][dimensions_masque];
 		int sommeCoeffValeurAbs = 0;
-		
+
+
 		// remplissage du masque
 		for(int ligne = 0; ligne < dimensions_masque; ligne++){
             for(int colonne = 0; colonne < dimensions_masque; colonne ++){
