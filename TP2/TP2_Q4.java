@@ -37,7 +37,7 @@ public class TP2_Q4 implements PlugInFilter {
 		for (l = 0; l < L; l++){
 			for (h = 0; h < H; h++){
 				ip.getPixel(l,h,rgb);
-				temp = (int) rgb[0];
+				temp = (int) (0.3*rgb[0] + 0.59*rgb[1] + 0.11*rgb[2]);
 				HI[temp] += 1;
 			}
 		}
