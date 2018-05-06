@@ -26,8 +26,8 @@ public class Seuillage_Hysteresis implements PlugInFilter {
         
         int n = 1;
 		
-		int seuil_bas = 50;
-		int seuil_haut = 130;
+		int seuil_bas = 130;
+		int seuil_haut = 200;
 
         int sommeX, sommeY, sommeTotale;
 		for (int y = n; y < h-n; y++){
@@ -41,10 +41,20 @@ public class Seuillage_Hysteresis implements PlugInFilter {
                         }
                     }
                 sommeTotale = (Math.abs(sommeX)+Math.abs(sommeY));
-                if(sommeTotale < seuil)
+                if(sommeTotale <= seuil_bas)
                     sommeTotale = 0;
-                if(sommeTotale >= seuil)
+                else
+                if(sommeTotale >= seuil_haut)
                    sommeTotale = 255;
+                else{ // somme totale entre les deux seuils
+                    for(int i = -1; i <= 1; i++){
+                        for(int j = -1; j <= 1; j++){
+                            if(iprX.getPixel(i, j) == 255){
+                                sommeTotale = 255;
+                            }
+                        }
+                    }
+                }
                 iprX.putPixel(x,y, sommeTotale);
 			}
         }
